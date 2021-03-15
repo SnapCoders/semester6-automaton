@@ -1,9 +1,18 @@
 import React from 'react';
 
-function App() {
+import AppProvider from './hooks';
+
+import Home from './pages/Home';
+
+import GlobalStyles from './styles/global';
+
+const App: React.FC = () => {
   return (
-    <h1>Hello React App</h1>
+    <AppProvider>
+      <Home />
+      <GlobalStyles />
+    </AppProvider>
   );
-}
+};
 
 export default App;
