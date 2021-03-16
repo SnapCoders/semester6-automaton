@@ -30,12 +30,14 @@ const CandyMachine: React.FC = () => {
     setSelectedCandy(value);
   }, []);
 
-  console.log(
-    'SelectedCandy: ',
-    selectedCandy,
-    'SelectedValue: ',
-    selectedValue,
-  );
+  const handleSubmit = useCallback(() => {
+    console.log(
+      'SelectedCandy: ',
+      selectedCandy,
+      'SelectedValue: ',
+      selectedValue,
+    );
+  }, [selectedCandy, selectedValue]);
 
   return (
     <Container>
@@ -51,59 +53,81 @@ const CandyMachine: React.FC = () => {
         <Candy type="top1left1colorA" onClick={() => handleSelectCandy('A')}>
           A<small>R$ 6</small>
         </Candy>
+
         <Candy type="top1left2colorA" onClick={() => handleSelectCandy('A')}>
           A<small>R$ 6</small>
         </Candy>
+
         <Candy type="top1left3colorA" onClick={() => handleSelectCandy('A')}>
           A<small>R$ 6</small>
         </Candy>
+
         <hr />
+
         <Candy type="top2left1colorA" onClick={() => handleSelectCandy('A')}>
           A<small>R$ 6</small>
         </Candy>
+
         <Candy type="top2left2colorA" onClick={() => handleSelectCandy('A')}>
           A<small>R$ 6</small>
         </Candy>
+
         <Candy type="top2left3colorA" onClick={() => handleSelectCandy('A')}>
           A<small>R$ 6</small>
         </Candy>
+
         <hr />
+
         <Candy type="top3left1colorB" onClick={() => handleSelectCandy('B')}>
           B<small>R$ 7</small>
         </Candy>
+
         <Candy type="top3left2colorB" onClick={() => handleSelectCandy('B')}>
           B<small>R$ 7</small>
         </Candy>
+
         <Candy type="top3left3colorB" onClick={() => handleSelectCandy('B')}>
           B<small>R$ 7</small>
         </Candy>
+
         <hr />
+
         <Candy type="top4left1colorB" onClick={() => handleSelectCandy('B')}>
           B<small>R$ 7</small>
         </Candy>
+
         <Candy type="top4left2colorB" onClick={() => handleSelectCandy('B')}>
           B<small>R$ 7</small>
         </Candy>
+
         <Candy type="top4left3colorB" onClick={() => handleSelectCandy('B')}>
           B<small>R$ 7</small>
         </Candy>
+
         <hr />
+
         <Candy type="top5left1colorC" onClick={() => handleSelectCandy('C')}>
           C<small>R$ 8</small>
         </Candy>
+
         <Candy type="top5left2colorC" onClick={() => handleSelectCandy('C')}>
           C<small>R$ 8</small>
         </Candy>
+
         <Candy type="top5left3colorC" onClick={() => handleSelectCandy('C')}>
           C<small>R$ 8</small>
         </Candy>
+
         <hr />
+
         <Candy type="top6left1colorC" onClick={() => handleSelectCandy('C')}>
           C<small>R$ 8</small>
         </Candy>
+
         <Candy type="top6left2colorC" onClick={() => handleSelectCandy('C')}>
           C<small>R$ 8</small>
         </Candy>
+
         <Candy type="top6left3colorC" onClick={() => handleSelectCandy('C')}>
           C<small>R$ 8</small>
         </Candy>
@@ -136,6 +160,7 @@ const CandyMachine: React.FC = () => {
 
         <button
           type="button"
+          onClick={handleSubmit}
           disabled={selectedCandy === '' || selectedValue === 0}
         >
           Comprar
