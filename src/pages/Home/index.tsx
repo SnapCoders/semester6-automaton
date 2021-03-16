@@ -1,15 +1,20 @@
 import React from 'react';
 
 import { Automaton } from '../../components/molecules';
+import { CandyMachine } from '../../components/organisms';
 
-import { Container } from './styles';
+import { Container, Content } from './styles';
 
 const Home: React.FC = () => {
   return (
     <Container>
-      <h1>Simulador de Autômato Finito</h1>
+      <h1>Simulador de Autômato Finito Determinístico</h1>
 
-      <Automaton />
+      <Content>
+        <CandyMachine />
+
+        <Automaton />
+      </Content>
     </Container>
   );
 };

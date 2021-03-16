@@ -9,5 +9,15 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
+`;
+
+export const Content = styled.div`
+  width: 100%;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
   justify-content: space-between;
 `;
