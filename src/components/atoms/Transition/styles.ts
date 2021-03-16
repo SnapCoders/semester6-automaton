@@ -43,7 +43,8 @@ const transition = {
     border-color: #fbfbfb transparent transparent transparent;
     border-radius: 200%/100px 100px 0 0;
 
-    position: relative;
+    position: absolute;
+    left: 60px;
 
     &::after {
       content: '';
@@ -79,7 +80,7 @@ const transition = {
     border-radius: 200%/100px 100px 0 0;
 
     position: absolute;
-    left: 60px;
+    right: 60px;
 
     transform: rotate(180deg);
 
@@ -107,11 +108,88 @@ const transition = {
       transform: rotate(-181deg);
     }
   `,
+  upToDown: css`
+    width: 180px;
+    height: 60px;
+
+    border: solid 2px #fbfbfb;
+    border-color: #fbfbfb transparent transparent transparent;
+    border-radius: 200%/100px 100px 0 0;
+
+    position: absolute;
+    top: 120px;
+
+    transform: rotate(90deg);
+
+    &::after {
+      content: '';
+
+      width: 0;
+      height: 0;
+
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 10px solid #fbfbfb;
+
+      position: absolute;
+      top: 5px;
+      right: 10px;
+
+      transform: rotate(24deg);
+    }
+
+    span {
+      position: absolute;
+      left: 75px;
+
+      font-size: 24px;
+      font-weight: bold;
+
+      transform: rotate(-90deg);
+    }
+  `,
+  downToUp: css`
+    width: 180px;
+    height: 60px;
+
+    border: solid 2px #fbfbfb;
+    border-color: #fbfbfb transparent transparent transparent;
+    border-radius: 200%/100px 100px 0 0;
+
+    position: absolute;
+    bottom: 120px;
+
+    transform: rotate(-90deg);
+
+    &::after {
+      content: '';
+
+      width: 0;
+      height: 0;
+
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 10px solid #fbfbfb;
+
+      position: absolute;
+      top: 5px;
+      right: 10px;
+
+      transform: rotate(24deg);
+    }
+
+    span {
+      position: absolute;
+      right: 75px;
+
+      transform: rotate(90deg);
+    }
+  `,
 };
 
 const isActiveTransition = {
   css: css`
-    border: solid 5px green;
+    border: solid 2px green;
     border-color: green transparent transparent transparent;
 
     &::after {
@@ -122,7 +200,12 @@ const isActiveTransition = {
 
 interface ContainerProps {
   isActive?: 0 | 1;
-  transitionAs?: 'loop' | 'leftToRight' | 'rightToLeft';
+  transitionAs?:
+    | 'loop'
+    | 'leftToRight'
+    | 'rightToLeft'
+    | 'upToDown'
+    | 'downToUp';
 }
 
 export const Container = styled.div<ContainerProps>`

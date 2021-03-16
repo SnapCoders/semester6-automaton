@@ -5,7 +5,12 @@ import { Container } from './styles';
 interface TransitionProps {
   label: string;
   isActive?: boolean;
-  transitionAs?: 'loop' | 'leftToRight' | 'rightToLeft';
+  transitionAs?:
+    | 'loop'
+    | 'leftToRight'
+    | 'rightToLeft'
+    | 'upToDown'
+    | 'downToUp';
 }
 
 const Transition: React.FC<TransitionProps> = ({
