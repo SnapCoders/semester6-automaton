@@ -2,7 +2,7 @@ import React, { createContext, useCallback, useContext, useState } from 'react';
 
 import { updateStates } from '../utils/updateStates';
 
-import { exampleStates } from '../constants/states';
+import { exampleStates } from '../constants/exampleStates';
 
 import { useToast } from './Toast';
 
