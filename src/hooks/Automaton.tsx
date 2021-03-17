@@ -1,5 +1,7 @@
 import React, { createContext, useCallback, useContext, useState } from 'react';
 
+import { updateStates } from '../utils/updateStates';
+
 interface ITransition {
   label: string;
   isActive?: boolean;
@@ -11,7 +13,7 @@ interface ITransition {
     | 'downToUp';
 }
 
-interface IState {
+export interface IState {
   label: string;
   isActive?: boolean;
   isInitial?: boolean;
@@ -28,7 +30,7 @@ const AutomatonContext = createContext<AutomatonContextData>(
   {} as AutomatonContextData,
 );
 
-interface IUpdateState {
+export interface IUpdateState {
   label: string;
   isActive: boolean;
   transition?: { label: string; isActive: boolean };
@@ -98,35 +100,7 @@ const AutomatonProvider: React.FC = ({ children }) => {
   ]);
 
   const handleUpdateState = useCallback((state: IUpdateState) => {
-    setStates(previousStates => {
-      const updatedStates = previousStates.map(item => {
-        const updated = { ...item, isActive: state.isActive };
-
-        const updatedState = item.label === state.label ? updated : item;
-
-        if (state.transition) {
-          const updatedTransitions = updatedState.transitions?.map(
-            transitionItem => {
-              const updatedTransition =
-                item.label === state.label &&
-                transitionItem.label === state.transition?.label
-                  ? {
-                      ...transitionItem,
-                      isActive: state.transition?.isActive,
-                    }
-                  : transitionItem;
-              return updatedTransition;
-            },
-          );
-
-          updatedState.transitions = updatedTransitions;
-        }
-
-        return updatedState;
-      });
-
-      return updatedStates;
-    });
+    setStates(previousStates => updateStates(previousStates, state));
   }, []);
 
   const handleStart = useCallback(
@@ -173,6 +147,44 @@ const AutomatonProvider: React.FC = ({ children }) => {
             });
 
             handleUpdateState({ label: '3', isActive: true });
+
+            setTimeout(() => {
+              handleUpdateState({
+                label: '3',
+                isActive: false,
+                transition: { label: 'C', isActive: true },
+              });
+
+              setTimeout(() => {
+                handleUpdateState({
+                  label: '3',
+                  isActive: false,
+                  transition: { label: 'C', isActive: false },
+                });
+
+                handleUpdateState({ label: '2', isActive: true });
+
+                setTimeout(() => {
+                  handleUpdateState({
+                    label: '2',
+                    isActive: false,
+                    transition: { label: 'A', isActive: true },
+                  });
+
+                  handleUpdateState({ label: '2', isActive: false });
+
+                  setTimeout(() => {
+                    handleUpdateState({
+                      label: '2',
+                      isActive: false,
+                      transition: { label: 'A', isActive: false },
+                    });
+
+                    handleUpdateState({ label: '1', isActive: true });
+                  }, 1000);
+                }, 1000);
+              }, 1000);
+            }, 1000);
           }, 1000);
         }, 1000);
       }, 1000);
