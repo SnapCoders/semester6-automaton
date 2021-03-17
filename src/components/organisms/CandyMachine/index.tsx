@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from 'react';
 
+import { useAutomaton } from '../../../hooks/Automaton';
+
 import real1 from '../../../assets/1_real.png';
 import real2 from '../../../assets/2_real.jpg';
 import real5 from '../../../assets/5_real.jpg';
@@ -19,6 +21,8 @@ import {
 } from './styles';
 
 const CandyMachine: React.FC = () => {
+  const { handleStart } = useAutomaton();
+
   const [selectedCandy, setSelectedCandy] = useState<string>('');
   const [selectedValue, setSelectedValue] = useState<number>(0);
 
@@ -29,15 +33,6 @@ const CandyMachine: React.FC = () => {
   const handleSelectCandy = useCallback((value: string) => {
     setSelectedCandy(value);
   }, []);
-
-  const handleSubmit = useCallback(() => {
-    console.log(
-      'SelectedCandy: ',
-      selectedCandy,
-      'SelectedValue: ',
-      selectedValue,
-    );
-  }, [selectedCandy, selectedValue]);
 
   return (
     <Container>
@@ -160,7 +155,7 @@ const CandyMachine: React.FC = () => {
 
         <button
           type="button"
-          onClick={handleSubmit}
+          onClick={() => handleStart(selectedValue, selectedCandy)}
           disabled={selectedCandy === '' || selectedValue === 0}
         >
           Comprar

@@ -1,42 +1,37 @@
 import React from 'react';
+import { v4 } from 'uuid';
 
 import { State, Transition } from '../../atoms';
 import { Grid } from '../../quarks';
 
+import { useAutomaton } from '../../../hooks/Automaton';
+
 import { Container } from './styles';
 
 const Automaton: React.FC = () => {
+  const { states } = useAutomaton();
+
   return (
     <Container>
       <Grid>
-        <State label="1" isActive isInitial>
-          <Transition label="A" transitionAs="loop" />
-          <Transition label="B" transitionAs="leftToRight" />
-          <Transition label="C" transitionAs="upToDown" />
-        </State>
-
-        <State label="2">
-          <Transition label="B" transitionAs="leftToRight" />
-          <Transition label="A" transitionAs="rightToLeft" />
-        </State>
-
-        <State label="3">
-          <Transition label="C" transitionAs="rightToLeft" />
-        </State>
-
-        <State label="4">
-          <Transition label="B" transitionAs="downToUp" />
-          <Transition label="A" transitionAs="leftToRight" />
-        </State>
-
-        <State label="5">
-          <Transition label="B" transitionAs="rightToLeft" />
-          <Transition label="C" transitionAs="leftToRight" />
-        </State>
-
-        <State label="6">
-          <Transition label="B" transitionAs="rightToLeft" />
-        </State>
+        {states.map(state => (
+          <State
+            key={v4()}
+            label={state.label}
+            isActive={state.isActive}
+            isInitial={state.isInitial}
+            isFinal={state.isFinal}
+          >
+            {state.transitions?.map(transition => (
+              <Transition
+                key={v4()}
+                label={transition.label}
+                isActive={transition.isActive}
+                transitionAs={transition.transitionAs}
+              />
+            ))}
+          </State>
+        ))}
       </Grid>
     </Container>
   );
