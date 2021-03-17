@@ -2,6 +2,10 @@ import React, { createContext, useCallback, useContext, useState } from 'react';
 
 import { updateStates } from '../utils/updateStates';
 
+import { useToast } from './Toast';
+
+const transitionTimer = 300;
+
 interface ITransition {
   label: string;
   isActive?: boolean;
@@ -37,6 +41,8 @@ export interface IUpdateState {
 }
 
 const AutomatonProvider: React.FC = ({ children }) => {
+  const { addToast } = useToast();
+
   const [states, setStates] = useState<IState[]>([
     {
       label: '1',
@@ -115,6 +121,8 @@ const AutomatonProvider: React.FC = ({ children }) => {
         return;
       }
 
+      addToast({ title: 'Autômato iniciado!' });
+
       handleUpdateState({
         label: '1',
         isActive: false,
@@ -181,15 +189,15 @@ const AutomatonProvider: React.FC = ({ children }) => {
                     });
 
                     handleUpdateState({ label: '1', isActive: true });
-                  }, 1000);
-                }, 1000);
-              }, 1000);
-            }, 1000);
-          }, 1000);
-        }, 1000);
-      }, 1000);
+                  }, transitionTimer);
+                }, transitionTimer);
+              }, transitionTimer);
+            }, transitionTimer);
+          }, transitionTimer);
+        }, transitionTimer);
+      }, transitionTimer);
     },
-    [handleUpdateState],
+    [addToast, handleUpdateState],
   );
 
   return (
