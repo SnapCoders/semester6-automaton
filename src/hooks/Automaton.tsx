@@ -2,6 +2,8 @@ import React, { createContext, useCallback, useContext, useState } from 'react';
 
 import { updateStates } from '../utils/updateStates';
 
+import { exampleStates } from '../constants/states';
+
 import { useToast } from './Toast';
 
 const transitionTimer = 300;
@@ -43,67 +45,7 @@ export interface IUpdateState {
 const AutomatonProvider: React.FC = ({ children }) => {
   const { addToast } = useToast();
 
-  const [states, setStates] = useState<IState[]>([
-    {
-      label: '1',
-      isActive: true,
-      isInitial: true,
-      isFinal: false,
-      transitions: [
-        { label: 'A', isActive: false, transitionAs: 'loop' },
-        { label: 'B', isActive: false, transitionAs: 'leftToRight' },
-        { label: 'C', isActive: false, transitionAs: 'upToDown' },
-      ],
-    },
-    {
-      label: '2',
-      isActive: false,
-      isInitial: false,
-      isFinal: false,
-      transitions: [
-        { label: 'B', isActive: false, transitionAs: 'leftToRight' },
-        { label: 'A', isActive: false, transitionAs: 'rightToLeft' },
-      ],
-    },
-    {
-      label: '3',
-      isActive: false,
-      isInitial: false,
-      isFinal: true,
-      transitions: [
-        { label: 'C', isActive: false, transitionAs: 'rightToLeft' },
-      ],
-    },
-    {
-      label: '4',
-      isActive: false,
-      isInitial: false,
-      isFinal: false,
-      transitions: [
-        { label: 'B', isActive: false, transitionAs: 'downToUp' },
-        { label: 'A', isActive: false, transitionAs: 'leftToRight' },
-      ],
-    },
-    {
-      label: '5',
-      isActive: false,
-      isInitial: false,
-      isFinal: false,
-      transitions: [
-        { label: 'B', isActive: false, transitionAs: 'rightToLeft' },
-        { label: 'C', isActive: false, transitionAs: 'leftToRight' },
-      ],
-    },
-    {
-      label: '6',
-      isActive: false,
-      isInitial: false,
-      isFinal: true,
-      transitions: [
-        { label: 'B', isActive: false, transitionAs: 'rightToLeft' },
-      ],
-    },
-  ]);
+  const [states, setStates] = useState<IState[]>(exampleStates as IState[]);
 
   const handleUpdateState = useCallback((state: IUpdateState) => {
     setStates(previousStates => updateStates(previousStates, state));
