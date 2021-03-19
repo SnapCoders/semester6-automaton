@@ -10,7 +10,7 @@ const AppProvider: React.FC = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <ToastProvider>
-        <AutomatonProvider>{children}</AutomatonProvider>
+        <AutomatonProvider transitionTimer={400}>{children}</AutomatonProvider>
       </ToastProvider>
     </ThemeProvider>
   );

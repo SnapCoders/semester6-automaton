@@ -2,11 +2,10 @@ import React, { createContext, useCallback, useContext, useState } from 'react';
 
 import { updateStates } from '../utils/updateStates';
 
-import { exampleStates } from '../constants/exampleStates';
+import { states as exampleStates } from '../constants/exampleStates';
+import { products as exampleProducts } from '../constants/products';
 
 import { useToast } from './Toast';
-
-const transitionTimer = 300;
 
 interface ITransition {
   label: string;
@@ -27,6 +26,11 @@ export interface IState {
   transitions?: ITransition[];
 }
 
+interface IProduct {
+  label: string;
+  price: number;
+}
+
 interface AutomatonContextData {
   states: IState[];
   handleStart: (_value: number, _candy: string) => void;
@@ -42,10 +46,21 @@ export interface IUpdateState {
   transition?: { label: string; isActive: boolean };
 }
 
-const AutomatonProvider: React.FC = ({ children }) => {
+interface AutomatonProviderProps {
+  transitionTimer: number;
+}
+
+const AutomatonProvider: React.FC<AutomatonProviderProps> = ({
+  transitionTimer,
+  children,
+}) => {
   const { addToast } = useToast();
 
   const [states, setStates] = useState<IState[]>(exampleStates as IState[]);
+  const [products, setProducts] = useState<IProduct[]>(
+    exampleProducts as IProduct[],
+  );
+  const [finalState, setFinalState] = useState<IState | undefined>(undefined);
 
   const handleUpdateState = useCallback((state: IUpdateState) => {
     setStates(previousStates => updateStates(previousStates, state));
@@ -53,6 +68,8 @@ const AutomatonProvider: React.FC = ({ children }) => {
 
   const handleStart = useCallback(
     (value: number, candy: string) => {
+      console.log(value, candy);
+
       if (!value) {
         console.log('Ops, selecione um valor para iniciar!');
         return;
@@ -131,6 +148,60 @@ const AutomatonProvider: React.FC = ({ children }) => {
                     });
 
                     handleUpdateState({ label: '1', isActive: true });
+
+                    const final = states.find(item => item.label === '1');
+
+                    setFinalState(final);
+
+                    if (!final?.isFinal) {
+                      const selectedCandy = products.find(
+                        item => item.label === candy,
+                      );
+
+                      if (selectedCandy) {
+                        const { price } = selectedCandy;
+
+                        console.log(
+                          `Valor do doce: ${price}`,
+                          `Valor informado: ${value}`,
+                        );
+
+                        const rest =
+                          price > value ? price - value : value - price;
+
+                        if (price > value) {
+                          addToast({
+                            title: 'Oops, operação inválida!',
+                            description: `Faltam ${rest} reais para comprar o doce ${candy}`,
+                            type: 'error',
+                          });
+
+                          return;
+                        }
+
+                        if (value > price) {
+                          addToast({
+                            title: 'Tudo certo!',
+                            description: `Seu troco é ${rest} reais.`,
+                            type: 'success',
+                          });
+
+                          return;
+                        }
+
+                        if (value === price) {
+                          addToast({
+                            title: 'Tudo certo!',
+                            description: `Você não tem troco.`,
+                            type: 'success',
+                          });
+
+                          return;
+                        }
+                      }
+                    }
+
+                    console.log('Estado final: ', final);
                   }, transitionTimer);
                 }, transitionTimer);
               }, transitionTimer);
@@ -139,7 +210,7 @@ const AutomatonProvider: React.FC = ({ children }) => {
         }, transitionTimer);
       }, transitionTimer);
     },
-    [addToast, handleUpdateState],
+    [states, products, addToast, handleUpdateState, transitionTimer],
   );
 
   return (

@@ -21,7 +21,7 @@ export const Coin = styled.div`
   box-shadow: inset 0 0 1em transparent, 0 0 0.4em #222222;
 
   position: absolute;
-  top: 71px;
+  top: 53px;
   right: 8px;
 
   display: flex;
@@ -182,7 +182,15 @@ const candyType = {
   `,
 };
 
+const candyActive = {
+  inactive: css`
+    filter: brightness(0.5);
+    cursor: not-allowed;
+  `,
+};
+
 interface CandyProps {
+  isActive?: boolean;
   type?:
     | 'top1left1colorA'
     | 'top1left2colorA'
@@ -234,6 +242,7 @@ export const Candy = styled.div<CandyProps>`
   }
 
   ${({ type }) => type && candyType[type]}
+  ${({ isActive }) => isActive && candyActive.inactive}
 `;
 
 export const Thunder1 = styled.div`
@@ -365,7 +374,7 @@ export const Aside = styled.aside`
     justify-content: center;
   }
 
-  > button {
+  > button:nth-of-type(1) {
     color: #fbfbfb;
 
     font-size: 12px;
@@ -381,6 +390,32 @@ export const Aside = styled.aside`
       filter: brightness(120%);
 
       box-shadow: inset 0 0 1em transparent, 0 0 0.4em #7159c1;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  > button:nth-of-type(2) {
+    color: #fbfbfb;
+
+    font-size: 12px;
+
+    background: darkred;
+    border-radius: 6px;
+
+    padding: 4px;
+    margin-top: 8px;
+
+    transition: all 0.2s;
+
+    filter: brightness(140%);
+
+    &:not(:disabled):hover {
+      filter: brightness(120%);
+
+      box-shadow: inset 0 0 1em transparent, 0 0 0.4em darkred;
     }
 
     &:disabled {

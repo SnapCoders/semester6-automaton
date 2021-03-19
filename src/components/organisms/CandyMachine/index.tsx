@@ -27,11 +27,23 @@ const CandyMachine: React.FC = () => {
   const [selectedValue, setSelectedValue] = useState<number>(0);
 
   const handleSelectMoney = useCallback((value: number) => {
-    setSelectedValue(value);
+    setSelectedValue(previousState => previousState + value);
   }, []);
 
-  const handleSelectCandy = useCallback((value: string) => {
-    setSelectedCandy(value);
+  const handleSelectCandy = useCallback(
+    (value: string) => {
+      if (selectedValue > 5) {
+        if (value === 'A') setSelectedCandy(value);
+        if (value === 'B' && selectedValue > 6) setSelectedCandy(value);
+        if (value === 'C' && selectedValue >= 8) setSelectedCandy(value);
+      }
+    },
+    [selectedValue],
+  );
+
+  const handleReset = useCallback(() => {
+    setSelectedValue(0);
+    setSelectedCandy('');
   }, []);
 
   return (
@@ -45,85 +57,157 @@ const CandyMachine: React.FC = () => {
       </ShowcaseGlass>
 
       <Showcase>
-        <Candy type="top1left1colorA" onClick={() => handleSelectCandy('A')}>
+        <Candy
+          type="top1left1colorA"
+          onClick={() => handleSelectCandy('A')}
+          isActive={selectedValue < 6}
+        >
           A<small>R$ 6</small>
         </Candy>
 
-        <Candy type="top1left2colorA" onClick={() => handleSelectCandy('A')}>
+        <Candy
+          type="top1left2colorA"
+          onClick={() => handleSelectCandy('A')}
+          isActive={selectedValue < 6}
+        >
           A<small>R$ 6</small>
         </Candy>
 
-        <Candy type="top1left3colorA" onClick={() => handleSelectCandy('A')}>
+        <Candy
+          type="top1left3colorA"
+          onClick={() => handleSelectCandy('A')}
+          isActive={selectedValue < 6}
+        >
           A<small>R$ 6</small>
         </Candy>
 
         <hr />
 
-        <Candy type="top2left1colorA" onClick={() => handleSelectCandy('A')}>
+        <Candy
+          type="top2left1colorA"
+          onClick={() => handleSelectCandy('A')}
+          isActive={selectedValue < 6}
+        >
           A<small>R$ 6</small>
         </Candy>
 
-        <Candy type="top2left2colorA" onClick={() => handleSelectCandy('A')}>
+        <Candy
+          type="top2left2colorA"
+          onClick={() => handleSelectCandy('A')}
+          isActive={selectedValue < 6}
+        >
           A<small>R$ 6</small>
         </Candy>
 
-        <Candy type="top2left3colorA" onClick={() => handleSelectCandy('A')}>
+        <Candy
+          type="top2left3colorA"
+          onClick={() => handleSelectCandy('A')}
+          isActive={selectedValue < 6}
+        >
           A<small>R$ 6</small>
         </Candy>
 
         <hr />
 
-        <Candy type="top3left1colorB" onClick={() => handleSelectCandy('B')}>
+        <Candy
+          type="top3left1colorB"
+          onClick={() => handleSelectCandy('B')}
+          isActive={selectedValue < 7}
+        >
           B<small>R$ 7</small>
         </Candy>
 
-        <Candy type="top3left2colorB" onClick={() => handleSelectCandy('B')}>
+        <Candy
+          type="top3left2colorB"
+          onClick={() => handleSelectCandy('B')}
+          isActive={selectedValue < 7}
+        >
           B<small>R$ 7</small>
         </Candy>
 
-        <Candy type="top3left3colorB" onClick={() => handleSelectCandy('B')}>
+        <Candy
+          type="top3left3colorB"
+          onClick={() => handleSelectCandy('B')}
+          isActive={selectedValue < 7}
+        >
           B<small>R$ 7</small>
         </Candy>
 
         <hr />
 
-        <Candy type="top4left1colorB" onClick={() => handleSelectCandy('B')}>
+        <Candy
+          type="top4left1colorB"
+          onClick={() => handleSelectCandy('B')}
+          isActive={selectedValue < 7}
+        >
           B<small>R$ 7</small>
         </Candy>
 
-        <Candy type="top4left2colorB" onClick={() => handleSelectCandy('B')}>
+        <Candy
+          type="top4left2colorB"
+          onClick={() => handleSelectCandy('B')}
+          isActive={selectedValue < 7}
+        >
           B<small>R$ 7</small>
         </Candy>
 
-        <Candy type="top4left3colorB" onClick={() => handleSelectCandy('B')}>
+        <Candy
+          type="top4left3colorB"
+          onClick={() => handleSelectCandy('B')}
+          isActive={selectedValue < 7}
+        >
           B<small>R$ 7</small>
         </Candy>
 
         <hr />
 
-        <Candy type="top5left1colorC" onClick={() => handleSelectCandy('C')}>
+        <Candy
+          type="top5left1colorC"
+          onClick={() => handleSelectCandy('C')}
+          isActive={selectedValue < 8}
+        >
           C<small>R$ 8</small>
         </Candy>
 
-        <Candy type="top5left2colorC" onClick={() => handleSelectCandy('C')}>
+        <Candy
+          type="top5left2colorC"
+          onClick={() => handleSelectCandy('C')}
+          isActive={selectedValue < 8}
+        >
           C<small>R$ 8</small>
         </Candy>
 
-        <Candy type="top5left3colorC" onClick={() => handleSelectCandy('C')}>
+        <Candy
+          type="top5left3colorC"
+          onClick={() => handleSelectCandy('C')}
+          isActive={selectedValue < 8}
+        >
           C<small>R$ 8</small>
         </Candy>
 
         <hr />
 
-        <Candy type="top6left1colorC" onClick={() => handleSelectCandy('C')}>
+        <Candy
+          type="top6left1colorC"
+          onClick={() => handleSelectCandy('C')}
+          isActive={selectedValue < 8}
+        >
           C<small>R$ 8</small>
         </Candy>
 
-        <Candy type="top6left2colorC" onClick={() => handleSelectCandy('C')}>
+        <Candy
+          type="top6left2colorC"
+          onClick={() => handleSelectCandy('C')}
+          isActive={selectedValue < 8}
+        >
           C<small>R$ 8</small>
         </Candy>
 
-        <Candy type="top6left3colorC" onClick={() => handleSelectCandy('C')}>
+        <Candy
+          type="top6left3colorC"
+          onClick={() => handleSelectCandy('C')}
+          isActive={selectedValue < 8}
+        >
           C<small>R$ 8</small>
         </Candy>
 
@@ -162,6 +246,14 @@ const CandyMachine: React.FC = () => {
         </button>
 
         <strong />
+
+        <button
+          type="button"
+          onClick={handleReset}
+          disabled={selectedValue === 0}
+        >
+          Resetar
+        </button>
       </Aside>
 
       <Footer />

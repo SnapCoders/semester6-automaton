@@ -1,4 +1,4 @@
-export const exampleStates = [
+export const states = [
   {
     label: '1',
     isActive: true,
