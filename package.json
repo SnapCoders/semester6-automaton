@@ -2,7 +2,7 @@
   "name": "automaton",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://snapcoders.github.io/automaton",
+  "homepage": "http://snapcoders.github.io/semester6-automaton",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
