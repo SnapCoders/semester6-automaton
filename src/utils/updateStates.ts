@@ -12,14 +12,19 @@ export function updateStates(
     if (state.transition) {
       const updatedTransitions = updatedState.transitions?.map(
         transitionItem => {
-          const updatedTransition =
-            item.label === state.label &&
-            transitionItem.label === state.transition?.label
-              ? {
-                  ...transitionItem,
-                  isActive: state.transition?.isActive,
-                }
-              : transitionItem;
+          let updatedTransition = transitionItem;
+
+          if (state.transition) {
+            updatedTransition =
+              item.label === state.label &&
+              transitionItem.label.includes(state.transition?.label)
+                ? {
+                    ...transitionItem,
+                    isActive: state.transition?.isActive,
+                  }
+                : transitionItem;
+          }
+
           return updatedTransition;
         },
       );
