@@ -205,7 +205,16 @@ interface ContainerProps {
     | 'leftToRight'
     | 'rightToLeft'
     | 'upToDown'
-    | 'downToUp';
+    | 'downToUp'
+    | 'straight';
+  width?: number;
+  position?: {
+    top?: number;
+    bottom?: number;
+    left?: number;
+    right?: number;
+  };
+  rotate?: number;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -216,6 +225,70 @@ export const Container = styled.div<ContainerProps>`
     top: -36px;
   }
 
-  ${({ transitionAs }) => transitionAs && transition[transitionAs]}
+  ${({ transitionAs, width, position, rotate }) =>
+    transitionAs && transitionAs !== 'straight'
+      ? transition[transitionAs]
+      : css`
+          width: ${width}px !important;
+          height: 60px;
+
+          border: solid 2px #fbfbfb;
+          border-color: #fbfbfb transparent transparent transparent;
+
+          position: absolute;
+
+          ${() =>
+            position &&
+            position.top &&
+            css`
+              top: ${position.top}px;
+            `}
+          ${() =>
+            position &&
+            position.bottom &&
+            css`
+              bottom: ${position.bottom}px;
+            `}
+          ${() =>
+            position &&
+            position.left &&
+            css`
+              left: ${position.left}px;
+            `}
+          ${() =>
+            position &&
+            position.right &&
+            css`
+              right: ${position.right}px;
+            `}
+
+          transform: rotate(${rotate}deg);
+
+          &::after {
+            content: '';
+
+            width: 0;
+            height: 0;
+
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 10px solid #fbfbfb;
+
+            position: absolute;
+            top: -6px;
+            right: -8px;
+          }
+
+          span {
+            position: absolute;
+            top: 4px;
+            left: 90px;
+
+            font-size: 24px;
+            font-weight: bold;
+
+            transform: rotate(-136deg);
+          }
+        `}
   ${({ isActive }) => isActive && isActiveTransition.css}
 `;
