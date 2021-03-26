@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 
 import { useAutomaton } from '../../../hooks/Automaton';
 
@@ -23,28 +23,12 @@ import {
 const CandyMachine: React.FC = () => {
   const { handleStart } = useAutomaton();
 
-  const [selectedCandy, setSelectedCandy] = useState<string>('');
-  const [selectedValue, setSelectedValue] = useState<number>(0);
-
-  const handleSelectMoney = useCallback((value: number) => {
-    setSelectedValue(previousState => previousState + value);
-  }, []);
-
-  const handleSelectCandy = useCallback(
-    (value: string) => {
-      if (selectedValue > 5) {
-        if (value === 'A') setSelectedCandy(value);
-        if (value === 'B' && selectedValue > 6) setSelectedCandy(value);
-        if (value === 'C' && selectedValue >= 8) setSelectedCandy(value);
-      }
-    },
-    [selectedValue],
-  );
-
-  const handleReset = useCallback(() => {
-    setSelectedValue(0);
-    setSelectedCandy('');
-  }, []);
+  const {
+    selectedValue,
+    selectedCandy,
+    handleSelectInput,
+    handleReset,
+  } = useAutomaton();
 
   return (
     <Container>
@@ -59,7 +43,7 @@ const CandyMachine: React.FC = () => {
       <Showcase>
         <Candy
           type="top1left1colorA"
-          onClick={() => handleSelectCandy('A')}
+          onClick={() => handleSelectInput('A')}
           isActive={selectedValue < 6}
         >
           A<small>R$ 6</small>
@@ -67,7 +51,7 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top1left2colorA"
-          onClick={() => handleSelectCandy('A')}
+          onClick={() => handleSelectInput('A')}
           isActive={selectedValue < 6}
         >
           A<small>R$ 6</small>
@@ -75,7 +59,7 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top1left3colorA"
-          onClick={() => handleSelectCandy('A')}
+          onClick={() => handleSelectInput('A')}
           isActive={selectedValue < 6}
         >
           A<small>R$ 6</small>
@@ -85,7 +69,7 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top2left1colorA"
-          onClick={() => handleSelectCandy('A')}
+          onClick={() => handleSelectInput('A')}
           isActive={selectedValue < 6}
         >
           A<small>R$ 6</small>
@@ -93,7 +77,7 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top2left2colorA"
-          onClick={() => handleSelectCandy('A')}
+          onClick={() => handleSelectInput('A')}
           isActive={selectedValue < 6}
         >
           A<small>R$ 6</small>
@@ -101,7 +85,7 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top2left3colorA"
-          onClick={() => handleSelectCandy('A')}
+          onClick={() => handleSelectInput('A')}
           isActive={selectedValue < 6}
         >
           A<small>R$ 6</small>
@@ -111,7 +95,7 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top3left1colorB"
-          onClick={() => handleSelectCandy('B')}
+          onClick={() => handleSelectInput('B')}
           isActive={selectedValue < 7}
         >
           B<small>R$ 7</small>
@@ -119,7 +103,7 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top3left2colorB"
-          onClick={() => handleSelectCandy('B')}
+          onClick={() => handleSelectInput('B')}
           isActive={selectedValue < 7}
         >
           B<small>R$ 7</small>
@@ -127,7 +111,7 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top3left3colorB"
-          onClick={() => handleSelectCandy('B')}
+          onClick={() => handleSelectInput('B')}
           isActive={selectedValue < 7}
         >
           B<small>R$ 7</small>
@@ -137,7 +121,7 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top4left1colorB"
-          onClick={() => handleSelectCandy('B')}
+          onClick={() => handleSelectInput('B')}
           isActive={selectedValue < 7}
         >
           B<small>R$ 7</small>
@@ -145,7 +129,7 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top4left2colorB"
-          onClick={() => handleSelectCandy('B')}
+          onClick={() => handleSelectInput('B')}
           isActive={selectedValue < 7}
         >
           B<small>R$ 7</small>
@@ -153,7 +137,7 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top4left3colorB"
-          onClick={() => handleSelectCandy('B')}
+          onClick={() => handleSelectInput('B')}
           isActive={selectedValue < 7}
         >
           B<small>R$ 7</small>
@@ -163,7 +147,7 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top5left1colorC"
-          onClick={() => handleSelectCandy('C')}
+          onClick={() => handleSelectInput('C')}
           isActive={selectedValue < 8}
         >
           C<small>R$ 8</small>
@@ -171,7 +155,7 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top5left2colorC"
-          onClick={() => handleSelectCandy('C')}
+          onClick={() => handleSelectInput('C')}
           isActive={selectedValue < 8}
         >
           C<small>R$ 8</small>
@@ -179,7 +163,7 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top5left3colorC"
-          onClick={() => handleSelectCandy('C')}
+          onClick={() => handleSelectInput('C')}
           isActive={selectedValue < 8}
         >
           C<small>R$ 8</small>
@@ -189,7 +173,7 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top6left1colorC"
-          onClick={() => handleSelectCandy('C')}
+          onClick={() => handleSelectInput('C')}
           isActive={selectedValue < 8}
         >
           C<small>R$ 8</small>
@@ -197,7 +181,7 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top6left2colorC"
-          onClick={() => handleSelectCandy('C')}
+          onClick={() => handleSelectInput('C')}
           isActive={selectedValue < 8}
         >
           C<small>R$ 8</small>
@@ -205,7 +189,7 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top6left3colorC"
-          onClick={() => handleSelectCandy('C')}
+          onClick={() => handleSelectInput('C')}
           isActive={selectedValue < 8}
         >
           C<small>R$ 8</small>
@@ -222,15 +206,15 @@ const CandyMachine: React.FC = () => {
         <span />
 
         <div>
-          <button type="button" onClick={() => handleSelectMoney(1)}>
+          <button type="button" onClick={() => handleSelectInput(1)}>
             <img src={real1} alt="1 real" />
           </button>
 
-          <button type="button" onClick={() => handleSelectMoney(2)}>
+          <button type="button" onClick={() => handleSelectInput(2)}>
             <img src={real2} alt="2 reais" />
           </button>
 
-          <button type="button" onClick={() => handleSelectMoney(5)}>
+          <button type="button" onClick={() => handleSelectInput(5)}>
             <img src={real5} alt="5 reais" />
           </button>
         </div>
