@@ -188,12 +188,25 @@ const transition = {
 };
 
 const isActiveTransition = {
-  css: css`
+  active: css`
     border: solid 2px green;
     border-color: green transparent transparent transparent;
 
+    span {
+      color: #fbfbfb;
+
+      filter: brightness(140%);
+    }
+
     &::after {
       border-left-color: green;
+    }
+  `,
+  inactive: css`
+    opacity: 0.2;
+
+    span {
+      color: yellow;
     }
   `,
 };
@@ -236,6 +249,8 @@ export const Container = styled.div<ContainerProps>`
           border-color: #fbfbfb transparent transparent transparent;
 
           position: absolute;
+
+          transition: all 0.2s;
 
           ${() =>
             position &&
@@ -287,8 +302,11 @@ export const Container = styled.div<ContainerProps>`
             font-size: 24px;
             font-weight: bold;
 
+            transition: all 0.2s;
+
             transform: rotate(-136deg);
           }
         `}
-  ${({ isActive }) => isActive && isActiveTransition.css}
+  ${({ isActive }) =>
+    isActive ? isActiveTransition.active : isActiveTransition.inactive}
 `;
