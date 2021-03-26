@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">
-	Simulador de um Autômato Finito!
+	Simulador de um Autômato Finito.
 </h4>
 
 <p align="center">
