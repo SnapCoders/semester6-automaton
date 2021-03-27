@@ -12,7 +12,13 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const Coin = styled.div`
+interface CoinProps {
+  visible: number;
+  topPosition?: number;
+  rightPosition?: number;
+}
+
+export const Coin = styled.div<CoinProps>`
   width: 18px;
   height: 18px;
 
@@ -21,12 +27,18 @@ export const Coin = styled.div`
   box-shadow: inset 0 0 1em transparent, 0 0 0.4em #222222;
 
   position: absolute;
-  top: 53px;
-  right: 8px;
+  top: ${({ topPosition }) => (topPosition ? `${topPosition}px` : '57px')};
+  right: ${({ rightPosition }) =>
+    rightPosition ? `${rightPosition}px` : '-16px'};
+
+  opacity: ${({ visible }) => (visible ? 1 : 0)};
+  visibility: ${({ visible }) => (visible ? 1 : 0)};
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  transition: all 0.8s;
 
   cursor: pointer;
 
@@ -85,6 +97,8 @@ export const Cage = styled.div`
   }
 
   strong {
+    margin-top: -48px;
+
     z-index: 6;
   }
 `;
@@ -191,6 +205,10 @@ const candyActive = {
 
 interface CandyProps {
   isActive?: boolean;
+  top?: number | boolean | undefined;
+  rotate?: number | boolean | undefined;
+  rotateX?: number | boolean | undefined;
+  rotateY?: number | boolean | undefined;
   type?:
     | 'top1left1colorA'
     | 'top1left2colorA'
@@ -227,6 +245,15 @@ export const Candy = styled.div<CandyProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  transform: ${({ rotate, rotateX, rotateY }) =>
+    rotate
+      ? `rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotate(${rotate}deg)`
+      : 'rotate(0deg)'};
+
+  top: ${({ top }) => top && `${top}px !important`};
+
+  transition: all 0.6s;
 
   cursor: pointer;
 
@@ -333,7 +360,7 @@ export const Aside = styled.aside`
       content: '';
 
       width: 6px;
-      height: 16px;
+      height: 18px;
 
       background: #444444;
 
@@ -341,10 +368,10 @@ export const Aside = styled.aside`
     }
   }
 
-  div {
+  > div {
     width: 100%;
 
-    margin: 20px auto;
+    margin: 10px auto;
 
     display: flex;
     flex-direction: column;
@@ -367,7 +394,7 @@ export const Aside = styled.aside`
     background: #222222;
     border: 2px solid #eee;
 
-    margin-bottom: 36px;
+    margin-bottom: 26px;
 
     display: flex;
     align-items: center;
@@ -482,6 +509,8 @@ export const Footer = styled.footer`
 
   position: absolute;
   bottom: 0;
+
+  z-index: 16;
 
   &::before {
     content: '';

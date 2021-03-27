@@ -55,8 +55,17 @@ interface AutomatonContextData {
   states: IState[];
   selectedValue: number;
   selectedCandy: string;
-  handleStart: (_value: number, _candy: string) => void;
-  handleSelectInput: (_value: number | string) => void;
+  inputCoinRight?: number;
+  inputCoinVisible: number;
+  outputCoinTop?: number;
+  outputCoinVisible: number;
+  selectedCandyRotate?: number;
+  selectedCandyRotateX?: number;
+  selectedCandyRotateY?: number;
+  selectedCandyTop?: number;
+  selectedCandyLabel?: string | undefined;
+  handleStart: () => void;
+  handleSelectInput: (_value: number | string, _candyLabel?: string) => void;
   handleReset: () => void;
 }
 
@@ -81,6 +90,16 @@ const AutomatonProvider: React.FC<AutomatonProviderProps> = ({
   const { addToast } = useToast();
 
   const [currentState, setCurrentState] = useState<string>('sI');
+  const [inputCoinRight, setInputCoinRight] = useState<number>(0);
+  const [inputCoinVisible, setInputCoinVisible] = useState<number>(1);
+  const [outputCoinTop, setOutputCoinTop] = useState<number>(0);
+  const [outputCoinVisible, setOutputCoinVisible] = useState<number>(0);
+  const [selectedCandyRotate, setSelectedCandyRotate] = useState<number>(0);
+  const [selectedCandyRotateX, setSelectedCandyRotateX] = useState<number>(0);
+  const [selectedCandyRotateY, setSelectedCandyRotateY] = useState<number>(0);
+  const [selectedCandyTop, setSelectedCandyTop] = useState<number>(0);
+  const [selectedCandyLabel, setSelectedCandyLabel] = useState<string>();
+  const [hasCashBack, setHasCashBack] = useState<boolean>(false);
 
   const [states, setStates] = useState<IState[]>(exampleStates as IState[]);
 
@@ -91,16 +110,52 @@ const AutomatonProvider: React.FC<AutomatonProviderProps> = ({
     setStates(previousStates => updateStates(previousStates, state));
   }, []);
 
-  const handleStart = useCallback(
-    (value: number, candy: string) => {
-      addToast({ title: 'Autômato iniciado!' });
+  const candyAnimation = useCallback(() => {
+    setTimeout(() => setSelectedCandyRotate(-8), 200);
+    setTimeout(() => setSelectedCandyRotate(2), 400);
+    setTimeout(() => setSelectedCandyRotate(-10), 600);
+    setTimeout(() => setSelectedCandyRotate(4), 600);
+    setTimeout(() => setSelectedCandyRotate(-14), 800);
+    setTimeout(() => setSelectedCandyRotate(6), 1000);
+    setTimeout(() => setSelectedCandyRotate(-20), 1200);
 
-      console.log(value, candy);
+    setTimeout(() => {
+      setSelectedCandyRotate(45);
+      setSelectedCandyRotateX(49);
+      setSelectedCandyRotateY(-17);
+    }, 1400);
 
-      // COLOCAR A ANIMAÇÃO DO DOCE CAINDO E DA MOEDA ENTRANDO NA MÁQUINA E CAINDO
-    },
-    [addToast],
-  );
+    setTimeout(() => setSelectedCandyTop(496), 1600);
+  }, []);
+
+  const coinAnimation = useCallback(() => {
+    setTimeout(() => {
+      setInputCoinVisible(0);
+
+      if (hasCashBack) {
+        setOutputCoinVisible(1);
+        setOutputCoinTop(2);
+
+        setTimeout(() => {
+          setOutputCoinTop(52);
+
+          setTimeout(() => {
+            setOutputCoinTop(2);
+
+            setTimeout(() => setOutputCoinTop(52), 200);
+          }, 200);
+        }, 200);
+      }
+    }, 500);
+  }, [hasCashBack]);
+
+  const handleStart = useCallback(() => {
+    setInputCoinRight(24);
+
+    candyAnimation();
+
+    coinAnimation();
+  }, [candyAnimation, coinAnimation]);
 
   const transitate = useCallback(
     ({ stateFrom, stateTo, value, message }: IInputState) => {
@@ -138,6 +193,8 @@ const AutomatonProvider: React.FC<AutomatonProviderProps> = ({
 
               if (product) {
                 const calculate = message.change - product.price;
+
+                if (calculate > 0) setHasCashBack(true);
 
                 addToast({
                   title: `Doce ${message.candy} comprado!`,
@@ -298,13 +355,17 @@ const AutomatonProvider: React.FC<AutomatonProviderProps> = ({
   }, [currentState, transitate]);
 
   const handleSelectInput = useCallback(
-    (input: number | string) => {
+    (input: number | string, candyLabel?: string) => {
       if (typeof input === 'string') {
         handleSelectCandy(input);
       }
 
       if (typeof input === 'number') {
         handleSelectMoney(input);
+      }
+
+      if (candyLabel) {
+        setSelectedCandyLabel(candyLabel);
       }
     },
     [handleSelectCandy, handleSelectMoney],
@@ -316,6 +377,15 @@ const AutomatonProvider: React.FC<AutomatonProviderProps> = ({
         states,
         selectedValue,
         selectedCandy,
+        inputCoinRight,
+        inputCoinVisible,
+        outputCoinTop,
+        outputCoinVisible,
+        selectedCandyRotate,
+        selectedCandyRotateX,
+        selectedCandyRotateY,
+        selectedCandyTop,
+        selectedCandyLabel,
         handleStart,
         handleSelectInput,
         handleReset,
