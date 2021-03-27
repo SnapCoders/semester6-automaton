@@ -8,10 +8,11 @@ import { Container, Content } from './styles';
 const Home: React.FC = () => {
   return (
     <Container>
-      <h1>Simulador de Autômato Finito Determinístico</h1>
-
       <Content>
-        <CandyMachine />
+        <div>
+          <h1>Simulador de Autômato Finito Determinístico</h1>
+          <CandyMachine />
+        </div>
 
         <Automaton />
       </Content>

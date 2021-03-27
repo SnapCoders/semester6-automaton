@@ -178,7 +178,7 @@ const AutomatonProvider: React.FC<AutomatonProviderProps> = ({
 
       if (currentState === 'q3') {
         if (value === 1) transitate({ stateFrom, stateTo: 'q4', value });
-        if (value === 2) transitate({ stateFrom, stateTo: 'q4', value });
+        if (value === 2) transitate({ stateFrom, stateTo: 'q8', value });
         if (value === 5) transitate({ stateFrom, stateTo: 'q7', value });
       }
 

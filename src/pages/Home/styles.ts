@@ -20,4 +20,9 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+
+  div h1 {
+    width: 390px;
+    margin-bottom: 40px;
+  }
 `;

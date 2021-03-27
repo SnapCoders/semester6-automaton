@@ -98,7 +98,15 @@ export const states = [
     isInitial: false,
     isFinal: false,
     transitions: [
-      { label: '1,2', isActive: false, transitionAs: 'leftToRight' },
+      { label: '1', isActive: false, transitionAs: 'leftToRight' },
+      {
+        label: '2',
+        isActive: false,
+        transitionAs: 'straight',
+        width: 230,
+        position: { top: 138, left: 18 },
+        rotate: 45,
+      },
       { label: '5', isActive: false, transitionAs: 'upToDown' },
     ],
   },
