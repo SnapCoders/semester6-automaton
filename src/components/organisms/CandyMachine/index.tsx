@@ -51,15 +51,15 @@ const CandyMachine: React.FC = () => {
       <Showcase>
         <Candy
           type="top1left1colorA"
-          top={selectedCandyLabel === 'top1left1colorA' && selectedCandyTop}
+          top={selectedCandyLabel === 'top1left1colorA' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top1left1colorA' && selectedCandyRotateX
+            selectedCandyLabel === 'top1left1colorA' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top1left1colorA' && selectedCandyRotateY
+            selectedCandyLabel === 'top1left1colorA' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top1left1colorA' && selectedCandyRotate
+            selectedCandyLabel === 'top1left1colorA' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('A', 'top1left1colorA')}
           isActive={selectedValue < 6}
@@ -69,15 +69,15 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top1left2colorA"
-          top={selectedCandyLabel === 'top1left2colorA' && selectedCandyTop}
+          top={selectedCandyLabel === 'top1left2colorA' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top1left2colorA' && selectedCandyRotateX
+            selectedCandyLabel === 'top1left2colorA' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top1left2colorA' && selectedCandyRotateY
+            selectedCandyLabel === 'top1left2colorA' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top1left2colorA' && selectedCandyRotate
+            selectedCandyLabel === 'top1left2colorA' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('A', 'top1left2colorA')}
           isActive={selectedValue < 6}
@@ -87,15 +87,15 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top1left3colorA"
-          top={selectedCandyLabel === 'top1left3colorA' && selectedCandyTop}
+          top={selectedCandyLabel === 'top1left3colorA' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top1left3colorA' && selectedCandyRotateX
+            selectedCandyLabel === 'top1left3colorA' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top1left3colorA' && selectedCandyRotateY
+            selectedCandyLabel === 'top1left3colorA' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top1left3colorA' && selectedCandyRotate
+            selectedCandyLabel === 'top1left3colorA' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('A', 'top1left3colorA')}
           isActive={selectedValue < 6}
@@ -107,15 +107,15 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top2left1colorA"
-          top={selectedCandyLabel === 'top2left1colorA' && selectedCandyTop}
+          top={selectedCandyLabel === 'top2left1colorA' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top2left1colorA' && selectedCandyRotateX
+            selectedCandyLabel === 'top2left1colorA' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top2left1colorA' && selectedCandyRotateY
+            selectedCandyLabel === 'top2left1colorA' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top2left1colorA' && selectedCandyRotate
+            selectedCandyLabel === 'top2left1colorA' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('A', 'top2left1colorA')}
           isActive={selectedValue < 6}
@@ -125,15 +125,15 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top2left2colorA"
-          top={selectedCandyLabel === 'top2left2colorA' && selectedCandyTop}
+          top={selectedCandyLabel === 'top2left2colorA' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top2left2colorA' && selectedCandyRotateX
+            selectedCandyLabel === 'top2left2colorA' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top2left2colorA' && selectedCandyRotateY
+            selectedCandyLabel === 'top2left2colorA' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top2left2colorA' && selectedCandyRotate
+            selectedCandyLabel === 'top2left2colorA' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('A', 'top2left2colorA')}
           isActive={selectedValue < 6}
@@ -143,15 +143,15 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top2left3colorA"
-          top={selectedCandyLabel === 'top2left3colorA' && selectedCandyTop}
+          top={selectedCandyLabel === 'top2left3colorA' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top2left3colorA' && selectedCandyRotateX
+            selectedCandyLabel === 'top2left3colorA' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top2left3colorA' && selectedCandyRotateY
+            selectedCandyLabel === 'top2left3colorA' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top2left3colorA' && selectedCandyRotate
+            selectedCandyLabel === 'top2left3colorA' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('A', 'top2left3colorA')}
           isActive={selectedValue < 6}
@@ -163,15 +163,15 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top3left1colorB"
-          top={selectedCandyLabel === 'top3left1colorB' && selectedCandyTop}
+          top={selectedCandyLabel === 'top3left1colorB' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top3left1colorB' && selectedCandyRotateX
+            selectedCandyLabel === 'top3left1colorB' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top3left1colorB' && selectedCandyRotateY
+            selectedCandyLabel === 'top3left1colorB' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top3left1colorB' && selectedCandyRotate
+            selectedCandyLabel === 'top3left1colorB' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('B', 'top3left1colorB')}
           isActive={selectedValue < 7}
@@ -181,15 +181,15 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top3left2colorB"
-          top={selectedCandyLabel === 'top3left2colorB' && selectedCandyTop}
+          top={selectedCandyLabel === 'top3left2colorB' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top3left2colorB' && selectedCandyRotateX
+            selectedCandyLabel === 'top3left2colorB' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top3left2colorB' && selectedCandyRotateY
+            selectedCandyLabel === 'top3left2colorB' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top3left2colorB' && selectedCandyRotate
+            selectedCandyLabel === 'top3left2colorB' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('B', 'top3left2colorB')}
           isActive={selectedValue < 7}
@@ -199,15 +199,15 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top3left3colorB"
-          top={selectedCandyLabel === 'top3left3colorB' && selectedCandyTop}
+          top={selectedCandyLabel === 'top3left3colorB' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top3left3colorB' && selectedCandyRotateX
+            selectedCandyLabel === 'top3left3colorB' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top3left3colorB' && selectedCandyRotateY
+            selectedCandyLabel === 'top3left3colorB' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top3left3colorB' && selectedCandyRotate
+            selectedCandyLabel === 'top3left3colorB' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('B', 'top3left3colorB')}
           isActive={selectedValue < 7}
@@ -219,15 +219,15 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top4left1colorB"
-          top={selectedCandyLabel === 'top4left1colorB' && selectedCandyTop}
+          top={selectedCandyLabel === 'top4left1colorB' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top4left1colorB' && selectedCandyRotateX
+            selectedCandyLabel === 'top4left1colorB' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top4left1colorB' && selectedCandyRotateY
+            selectedCandyLabel === 'top4left1colorB' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top4left1colorB' && selectedCandyRotate
+            selectedCandyLabel === 'top4left1colorB' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('B', 'top4left1colorB')}
           isActive={selectedValue < 7}
@@ -237,15 +237,15 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top4left2colorB"
-          top={selectedCandyLabel === 'top4left2colorB' && selectedCandyTop}
+          top={selectedCandyLabel === 'top4left2colorB' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top4left2colorB' && selectedCandyRotateX
+            selectedCandyLabel === 'top4left2colorB' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top4left2colorB' && selectedCandyRotateY
+            selectedCandyLabel === 'top4left2colorB' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top4left2colorB' && selectedCandyRotate
+            selectedCandyLabel === 'top4left2colorB' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('B', 'top4left2colorB')}
           isActive={selectedValue < 7}
@@ -255,15 +255,15 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top4left3colorB"
-          top={selectedCandyLabel === 'top4left3colorB' && selectedCandyTop}
+          top={selectedCandyLabel === 'top4left3colorB' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top4left3colorB' && selectedCandyRotateX
+            selectedCandyLabel === 'top4left3colorB' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top4left3colorB' && selectedCandyRotateY
+            selectedCandyLabel === 'top4left3colorB' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top4left3colorB' && selectedCandyRotate
+            selectedCandyLabel === 'top4left3colorB' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('B', 'top4left3colorB')}
           isActive={selectedValue < 7}
@@ -275,15 +275,15 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top5left1colorC"
-          top={selectedCandyLabel === 'top5left1colorC' && selectedCandyTop}
+          top={selectedCandyLabel === 'top5left1colorC' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top5left1colorC' && selectedCandyRotateX
+            selectedCandyLabel === 'top5left1colorC' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top5left1colorC' && selectedCandyRotateY
+            selectedCandyLabel === 'top5left1colorC' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top5left1colorC' && selectedCandyRotate
+            selectedCandyLabel === 'top5left1colorC' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('C', 'top5left1colorC')}
           isActive={selectedValue < 8}
@@ -293,15 +293,15 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top5left2colorC"
-          top={selectedCandyLabel === 'top5left2colorC' && selectedCandyTop}
+          top={selectedCandyLabel === 'top5left2colorC' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top5left2colorC' && selectedCandyRotateX
+            selectedCandyLabel === 'top5left2colorC' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top5left2colorC' && selectedCandyRotateY
+            selectedCandyLabel === 'top5left2colorC' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top5left2colorC' && selectedCandyRotate
+            selectedCandyLabel === 'top5left2colorC' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('C', 'top5left2colorC')}
           isActive={selectedValue < 8}
@@ -311,15 +311,15 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top5left3colorC"
-          top={selectedCandyLabel === 'top5left3colorC' && selectedCandyTop}
+          top={selectedCandyLabel === 'top5left3colorC' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top5left3colorC' && selectedCandyRotateX
+            selectedCandyLabel === 'top5left3colorC' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top5left3colorC' && selectedCandyRotateY
+            selectedCandyLabel === 'top5left3colorC' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top5left3colorC' && selectedCandyRotate
+            selectedCandyLabel === 'top5left3colorC' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('C', 'top5left3colorC')}
           isActive={selectedValue < 8}
@@ -331,15 +331,15 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top6left1colorC"
-          top={selectedCandyLabel === 'top6left1colorC' && selectedCandyTop}
+          top={selectedCandyLabel === 'top6left1colorC' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top6left1colorC' && selectedCandyRotateX
+            selectedCandyLabel === 'top6left1colorC' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top6left1colorC' && selectedCandyRotateY
+            selectedCandyLabel === 'top6left1colorC' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top6left1colorC' && selectedCandyRotate
+            selectedCandyLabel === 'top6left1colorC' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('C', 'top6left1colorC')}
           isActive={selectedValue < 8}
@@ -349,15 +349,15 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top6left2colorC"
-          top={selectedCandyLabel === 'top6left2colorC' && selectedCandyTop}
+          top={selectedCandyLabel === 'top6left2colorC' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top6left2colorC' && selectedCandyRotateX
+            selectedCandyLabel === 'top6left2colorC' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top6left2colorC' && selectedCandyRotateY
+            selectedCandyLabel === 'top6left2colorC' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top6left2colorC' && selectedCandyRotate
+            selectedCandyLabel === 'top6left2colorC' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('C', 'top6left2colorC')}
           isActive={selectedValue < 8}
@@ -367,15 +367,15 @@ const CandyMachine: React.FC = () => {
 
         <Candy
           type="top6left3colorC"
-          top={selectedCandyLabel === 'top6left3colorC' && selectedCandyTop}
+          top={selectedCandyLabel === 'top6left3colorC' ? selectedCandyTop : 0}
           rotateX={
-            selectedCandyLabel === 'top6left3colorC' && selectedCandyRotateX
+            selectedCandyLabel === 'top6left3colorC' ? selectedCandyRotateX : 0
           }
           rotateY={
-            selectedCandyLabel === 'top6left3colorC' && selectedCandyRotateY
+            selectedCandyLabel === 'top6left3colorC' ? selectedCandyRotateY : 0
           }
           rotate={
-            selectedCandyLabel === 'top6left3colorC' && selectedCandyRotate
+            selectedCandyLabel === 'top6left3colorC' ? selectedCandyRotate : 0
           }
           onClick={() => handleSelectInput('C', 'top6left3colorC')}
           isActive={selectedValue < 8}

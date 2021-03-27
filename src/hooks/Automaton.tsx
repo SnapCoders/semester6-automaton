@@ -345,11 +345,18 @@ const AutomatonProvider: React.FC<AutomatonProviderProps> = ({
   const handleReset = useCallback(() => {
     setSelectedValue(0);
     setSelectedCandy('');
+    setInputCoinRight(0);
+    setInputCoinVisible(1);
+    setOutputCoinTop(0);
+    setOutputCoinVisible(0);
+    setSelectedCandyRotate(0);
+    setSelectedCandyRotateX(0);
+    setSelectedCandyRotateY(0);
+    setSelectedCandyTop(0);
+    setSelectedCandyLabel('');
+    setHasCashBack(false);
 
-    if (currentState === 'ct')
-      transitate({ stateFrom: 'ct', stateTo: 'sI', value: 0 });
-    if (currentState === 'st')
-      transitate({ stateFrom: 'st', stateTo: 'sI', value: 0 });
+    transitate({ stateFrom: currentState, stateTo: 'sI', value: 0 });
 
     setCurrentState('sI');
   }, [currentState, transitate]);
