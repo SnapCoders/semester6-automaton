@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <img alt="Autômato Finito" src="./src/assets/automaton.png" width="600px" />
+  <img alt="Autômato Finito" src="./src/assets/automaton_completed.png" width="600px" />
 </p>
 
 ## :rocket: Tecnologias
