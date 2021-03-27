@@ -29,8 +29,8 @@ const Automaton: React.FC = () => {
                 isActive={transition.isActive}
                 transitionAs={transition.transitionAs}
                 width={transition.width}
-                position={transition.position}
-                rotate={transition.rotate}
+                positions={transition.positions}
+                rotations={transition.rotations}
               />
             ))}
           </State>

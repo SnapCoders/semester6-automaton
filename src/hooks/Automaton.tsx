@@ -27,13 +27,20 @@ interface ITransition {
     | 'downToUp'
     | 'straight';
   width?: number;
-  position?: {
-    top?: number;
-    bottom?: number;
-    left?: number;
-    right?: number;
+  positions?: {
+    line: {
+      top?: number;
+      left?: number;
+    };
+    label: {
+      top?: number;
+      left?: number;
+    };
   };
-  rotate?: number;
+  rotations?: {
+    line: number;
+    label: number;
+  };
 }
 
 export interface IState {
@@ -178,7 +185,7 @@ const AutomatonProvider: React.FC<AutomatonProviderProps> = ({
 
       if (currentState === 'q3') {
         if (value === 1) transitate({ stateFrom, stateTo: 'q4', value });
-        if (value === 2) transitate({ stateFrom, stateTo: 'q8', value });
+        if (value === 2) transitate({ stateFrom, stateTo: 'q1', value });
         if (value === 5) transitate({ stateFrom, stateTo: 'q7', value });
       }
 

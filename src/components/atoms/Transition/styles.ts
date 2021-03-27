@@ -221,13 +221,20 @@ interface ContainerProps {
     | 'downToUp'
     | 'straight';
   width?: number;
-  position?: {
-    top?: number;
-    bottom?: number;
-    left?: number;
-    right?: number;
+  positions?: {
+    line: {
+      top?: number;
+      left?: number;
+    };
+    label: {
+      top?: number;
+      left?: number;
+    };
   };
-  rotate?: number;
+  rotations?: {
+    line: number;
+    label: number;
+  };
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -238,7 +245,7 @@ export const Container = styled.div<ContainerProps>`
     top: -36px;
   }
 
-  ${({ transitionAs, width, position, rotate }) =>
+  ${({ transitionAs, width, positions, rotations }) =>
     transitionAs && transitionAs !== 'straight'
       ? transition[transitionAs]
       : css`
@@ -253,31 +260,21 @@ export const Container = styled.div<ContainerProps>`
           transition: all 0.2s;
 
           ${() =>
-            position &&
-            position.top &&
+            positions &&
+            positions.line &&
+            positions.line.top &&
             css`
-              top: ${position.top}px;
+              top: ${positions.line.top}px;
             `}
           ${() =>
-            position &&
-            position.bottom &&
+            positions &&
+            positions.line &&
+            positions.line.left &&
             css`
-              bottom: ${position.bottom}px;
-            `}
-          ${() =>
-            position &&
-            position.left &&
-            css`
-              left: ${position.left}px;
-            `}
-          ${() =>
-            position &&
-            position.right &&
-            css`
-              right: ${position.right}px;
+              left: ${positions.line.left}px;
             `}
 
-          transform: rotate(${rotate}deg);
+          transform: rotate(${rotations?.line}deg);
 
           &::after {
             content: '';
@@ -296,15 +293,27 @@ export const Container = styled.div<ContainerProps>`
 
           span {
             position: absolute;
-            top: 4px;
-            left: 90px;
+            ${() =>
+              positions &&
+              positions.label &&
+              positions.label.top &&
+              css`
+                top: ${positions.label.top}px;
+              `}
+            ${() =>
+              positions &&
+              positions.label &&
+              positions.label.left &&
+              css`
+                left: ${positions.label.left}px;
+              `}
 
             font-size: 24px;
             font-weight: bold;
 
             transition: all 0.2s;
 
-            transform: rotate(-136deg);
+            transform: rotate(${rotations?.label}deg);
           }
         `}
   ${({ isActive }) =>

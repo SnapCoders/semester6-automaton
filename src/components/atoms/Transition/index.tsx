@@ -13,13 +13,20 @@ interface TransitionProps {
     | 'downToUp'
     | 'straight';
   width?: number;
-  position?: {
-    top?: number;
-    bottom?: number;
-    left?: number;
-    right?: number;
+  positions?: {
+    line: {
+      top?: number;
+      left?: number;
+    };
+    label: {
+      top?: number;
+      left?: number;
+    };
   };
-  rotate?: number;
+  rotations?: {
+    line: number;
+    label: number;
+  };
 }
 
 const Transition: React.FC<TransitionProps> = ({
@@ -27,16 +34,16 @@ const Transition: React.FC<TransitionProps> = ({
   isActive,
   transitionAs,
   width,
-  position,
-  rotate,
+  positions,
+  rotations,
 }) => {
   return (
     <Container
       isActive={isActive ? 1 : 0}
       transitionAs={transitionAs}
       width={width}
-      position={position}
-      rotate={rotate}
+      positions={positions}
+      rotations={rotations}
     >
       <span>{label}</span>
     </Container>
