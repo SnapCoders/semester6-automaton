@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/semester6-automaton/static/js/main.d2f6ab1c.chunk.js",
-    "main.js.map": "/semester6-automaton/static/js/main.d2f6ab1c.chunk.js.map",
+    "main.js": "/semester6-automaton/static/js/main.1f3f0e4d.chunk.js",
+    "main.js.map": "/semester6-automaton/static/js/main.1f3f0e4d.chunk.js.map",
     "runtime-main.js": "/semester6-automaton/static/js/runtime-main.49554c5e.js",
     "runtime-main.js.map": "/semester6-automaton/static/js/runtime-main.49554c5e.js.map",
     "static/js/2.c2afab37.chunk.js": "/semester6-automaton/static/js/2.c2afab37.chunk.js",
@@ -15,6 +15,6 @@
   "entrypoints": [
     "static/js/runtime-main.49554c5e.js",
     "static/js/2.c2afab37.chunk.js",
-    "static/js/main.d2f6ab1c.chunk.js"
+    "static/js/main.1f3f0e4d.chunk.js"
   ]
 }
