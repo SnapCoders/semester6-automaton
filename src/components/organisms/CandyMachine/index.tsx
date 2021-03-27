@@ -29,6 +29,7 @@ const CandyMachine: React.FC = () => {
     selectedCandyRotateY,
     selectedCandyTop,
     selectedCandyLabel,
+    isBlockedMoney,
     handleStart,
     handleSelectInput,
     handleReset,
@@ -394,15 +395,27 @@ const CandyMachine: React.FC = () => {
         <span />
 
         <div>
-          <button type="button" onClick={() => handleSelectInput(1)}>
+          <button
+            type="button"
+            disabled={isBlockedMoney}
+            onClick={() => handleSelectInput(1)}
+          >
             <img src={real1} alt="1 real" />
           </button>
 
-          <button type="button" onClick={() => handleSelectInput(2)}>
+          <button
+            type="button"
+            disabled={isBlockedMoney}
+            onClick={() => handleSelectInput(2)}
+          >
             <img src={real2} alt="2 reais" />
           </button>
 
-          <button type="button" onClick={() => handleSelectInput(5)}>
+          <button
+            type="button"
+            disabled={isBlockedMoney}
+            onClick={() => handleSelectInput(5)}
+          >
             <img src={real5} alt="5 reais" />
           </button>
         </div>

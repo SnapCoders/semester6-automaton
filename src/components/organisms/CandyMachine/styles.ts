@@ -383,6 +383,10 @@ export const Aside = styled.aside`
 
       margin: 8px 0;
     }
+
+    button:disabled {
+      filter: brightness(80%);
+    }
   }
 
   label {

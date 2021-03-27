@@ -64,6 +64,7 @@ interface AutomatonContextData {
   selectedCandyRotateY?: number;
   selectedCandyTop?: number;
   selectedCandyLabel?: string | undefined;
+  isBlockedMoney?: boolean;
   handleStart: () => void;
   handleSelectInput: (_value: number | string, _candyLabel?: string) => void;
   handleReset: () => void;
@@ -105,6 +106,8 @@ const AutomatonProvider: React.FC<AutomatonProviderProps> = ({
 
   const [selectedCandy, setSelectedCandy] = useState<string>('');
   const [selectedValue, setSelectedValue] = useState<number>(0);
+
+  const [isBlockedMoney, setIsBlockedMoney] = useState<boolean>(false);
 
   const handleUpdateState = useCallback((state: IUpdateState) => {
     setStates(previousStates => updateStates(previousStates, state));
@@ -177,6 +180,8 @@ const AutomatonProvider: React.FC<AutomatonProviderProps> = ({
 
           setCurrentState(stateTo);
 
+          setIsBlockedMoney(false);
+
           if (message) {
             if (stateTo === 'st') {
               addToast({
@@ -212,6 +217,8 @@ const AutomatonProvider: React.FC<AutomatonProviderProps> = ({
 
   const handleSelectMoney = useCallback(
     (value: number) => {
+      setIsBlockedMoney(true);
+
       setSelectedValue(previousState => previousState + value);
 
       const stateFrom = currentState;
@@ -287,6 +294,8 @@ const AutomatonProvider: React.FC<AutomatonProviderProps> = ({
 
   const handleSelectCandy = useCallback(
     (value: string) => {
+      setIsBlockedMoney(true);
+
       if (selectedValue > 5) {
         if (value === 'A') setSelectedCandy(value);
         if (value === 'B' && selectedValue > 6) setSelectedCandy(value);
@@ -393,6 +402,7 @@ const AutomatonProvider: React.FC<AutomatonProviderProps> = ({
         selectedCandyRotateY,
         selectedCandyTop,
         selectedCandyLabel,
+        isBlockedMoney,
         handleStart,
         handleSelectInput,
         handleReset,
