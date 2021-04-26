@@ -45,10 +45,9 @@ const ElevatorProvider: React.FC<ElevatorProviderProps> = ({ children }) => {
 
   const handleStart = useCallback(
     (inputFloor: IFloor) => {
-      const initialFloor = floor;
       handleSelectFloor(inputFloor);
     },
-    [floor, handleSelectFloor],
+    [handleSelectFloor],
   );
 
   const value = useMemo(
