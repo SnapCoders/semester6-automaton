@@ -47,8 +47,6 @@ const ElevatorProvider: React.FC<ElevatorProviderProps> = ({ children }) => {
     (inputFloor: IFloor) => {
       const initialFloor = floor;
       handleSelectFloor(inputFloor);
-
-      console.log('comecei');
     },
     [floor, handleSelectFloor],
   );
