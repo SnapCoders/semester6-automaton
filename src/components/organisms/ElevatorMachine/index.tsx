@@ -1,33 +1,16 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { FiArrowUp, FiArrowDown } from 'react-icons/fi';
 
 import { Container, ViewOnlyBuilding, Elevator, Aside, Footer } from './styles';
 
-type IFloor = 'T' | '1' | '2' | '3' | '4';
+import { useElevator } from '../../../hooks/useElevatorMachine';
 
 interface ElevatorMachineProps {
   viewOnly?: boolean;
 }
 
 const ElevatorMachine: React.FC<ElevatorMachineProps> = ({ viewOnly }) => {
-  const [selectedValue] = useState();
-
-  const [floor, setFloor] = useState<IFloor>('T');
-  const [, setDirection] = useState<'up' | 'down'>('up');
-
-  const handleReset = useCallback(() => {
-    console.log('handleReset');
-  }, []);
-
-  const handleSelectFloor = useCallback(
-    (inputFloor: IFloor) => setFloor(inputFloor),
-    [],
-  );
-
-  const handleSelectDirection = useCallback(
-    (inputDirection: 'up' | 'down') => setDirection(inputDirection),
-    [],
-  );
+  const { handleSelectFloor, floor, handleSelectDirection } = useElevator();
 
   const top = useMemo(() => {
     switch (floor) {
@@ -82,14 +65,6 @@ const ElevatorMachine: React.FC<ElevatorMachineProps> = ({ viewOnly }) => {
         <Elevator floor={floor}>
           <strong style={{ top }} />
         </Elevator>
-
-        <button
-          type="button"
-          onClick={handleReset}
-          disabled={selectedValue === 0}
-        >
-          Resetar
-        </button>
       </Aside>
 
       <Footer />
