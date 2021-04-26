@@ -1,8 +1,9 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import { AutomatonProvider } from './Automaton';
-import { ToastProvider } from './Toast';
+import { CandyMachineProvider } from './useCandyMachine';
+import { ElevatorProvider } from './useElevatorMachine';
+import { ToastProvider } from './useToast';
 
 import theme from '../styles/theme';
 
@@ -10,7 +11,9 @@ const AppProvider: React.FC = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <ToastProvider>
-        <AutomatonProvider transitionTimer={400}>{children}</AutomatonProvider>
+        <CandyMachineProvider>
+          <ElevatorProvider transitionTimer={400}>{children}</ElevatorProvider>
+        </CandyMachineProvider>
       </ToastProvider>
     </ThemeProvider>
   );

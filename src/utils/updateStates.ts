@@ -1,9 +1,6 @@
-import { IState, IUpdateState } from '../hooks/Automaton';
+import { IState, IUpdateState } from '../@types/automaton';
 
-export function updateStates(
-  previousStates: IState[],
-  state: IUpdateState,
-): IState[] {
+function updateStates(previousStates: IState[], state: IUpdateState): IState[] {
   const updatedStates = previousStates.map(item => {
     const updated = { ...item, isActive: state.isActive };
 
@@ -37,3 +34,5 @@ export function updateStates(
 
   return updatedStates;
 }
+
+export default updateStates;

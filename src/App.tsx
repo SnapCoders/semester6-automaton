@@ -2,14 +2,14 @@ import React from 'react';
 
 import AppProvider from './hooks';
 
-import Home from './pages/Home';
+import Routes from './routes';
 
 import GlobalStyles from './styles/global';
 
 const App: React.FC = () => {
   return (
     <AppProvider>
-      <Home />
+      <Routes />
       <GlobalStyles />
     </AppProvider>
   );

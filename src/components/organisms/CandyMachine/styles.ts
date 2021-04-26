@@ -1,4 +1,56 @@
 import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
+
+export const ViewOnlyShowcase = styled(Link)`
+  position: absolute;
+
+  background: #fbfbfb;
+
+  border-radius: 16px;
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  opacity: 0;
+
+  cursor: pointer;
+
+  z-index: 10;
+
+  transition: all 0.8s;
+
+  &:hover {
+    opacity: 0.2;
+
+    /* transform: scale(1.01);
+
+    & ~ div {
+      transition: transform 0.8s;
+      transform: scale(1.01);
+    }
+
+    & ~ main {
+      transition: transform 0.8s;
+      transform: scale(1.01);
+    }
+
+    & ~ aside {
+      transition: transform 0.8s;
+      transform: scale(1.01);
+    }
+
+    & ~ footer {
+      transition: bottom 0.8s;
+      bottom: -8px;
+
+      height: 46px;
+
+      transform: scale(1.01);
+    } */
+  }
+`;
 
 export const Container = styled.div`
   width: 360px;

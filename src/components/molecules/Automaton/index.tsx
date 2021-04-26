@@ -4,16 +4,19 @@ import { v4 } from 'uuid';
 import { State, Transition } from '../../atoms';
 import { Grid } from '../../quarks';
 
-import { useAutomaton } from '../../../hooks/Automaton';
-
 import { Container } from './styles';
 
-const Automaton: React.FC = () => {
-  const { states } = useAutomaton();
+import { IState } from '../../../@types/automaton';
 
+interface AutomatonProps {
+  states: IState[];
+  columns?: number;
+}
+
+const Automaton: React.FC<AutomatonProps> = ({ states, columns }) => {
   return (
     <Container>
-      <Grid>
+      <Grid columns={columns}>
         {states.map(state => (
           <State
             key={v4()}
@@ -21,6 +24,7 @@ const Automaton: React.FC = () => {
             isActive={state.isActive}
             isInitial={state.isInitial}
             isFinal={state.isFinal}
+            isHidden={state.isHidden}
           >
             {state.transitions?.map(transition => (
               <Transition

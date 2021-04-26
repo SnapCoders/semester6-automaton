@@ -2,8 +2,12 @@ import React from 'react';
 
 import { Container } from './styles';
 
-const Grid: React.FC = ({ children }) => {
-  return <Container>{children}</Container>;
+interface GridProps {
+  columns?: number;
+}
+
+const Grid: React.FC<GridProps> = ({ children, columns }) => {
+  return <Container columns={columns}>{children}</Container>;
 };
 
 export default Grid;

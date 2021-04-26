@@ -54,6 +54,7 @@ interface ContainerProps {
   isActive?: 0 | 1;
   isInitial?: 0 | 1;
   isFinal?: 0 | 1;
+  isHidden?: 0 | 1;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -70,6 +71,8 @@ export const Container = styled.div<ContainerProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  opacity: ${({ isHidden }) => (isHidden ? '0' : '1')};
 
   position: relative;
 

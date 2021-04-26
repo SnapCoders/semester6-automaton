@@ -2,27 +2,38 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
 
   padding: 64px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
 `;
 
-export const Content = styled.div`
-  width: 100%;
+export const PageHeader = styled.div`
+  display: flex;
+  justify-content: center;
 
-  margin: 0 auto;
+  margin-bottom: 64px;
+`;
+
+export const Machines = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+`;
+
+export const Buttons = styled.div`
+  padding: 64px 0;
 
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
 
-  div h1 {
-    width: 390px;
-    margin-bottom: 40px;
+  a {
+    background: #7159c1;
+
+    padding: 8px 32px;
+
+    border-radius: 16px;
+
+    color: #fbfbfb;
   }
 `;

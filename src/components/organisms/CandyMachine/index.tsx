@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { useAutomaton } from '../../../hooks/Automaton';
+import { useCandyMachine } from '../../../hooks/useCandyMachine';
 
 import real1 from '../../../assets/1_real.png';
 import real2 from '../../../assets/2_real.jpg';
 import real5 from '../../../assets/5_real.jpg';
 
 import {
+  ViewOnlyShowcase,
   Container,
   Coin,
   Showcase,
@@ -20,7 +21,11 @@ import {
   Footer,
 } from './styles';
 
-const CandyMachine: React.FC = () => {
+interface CandyMachineProps {
+  viewOnly?: boolean;
+}
+
+const CandyMachine: React.FC<CandyMachineProps> = ({ viewOnly }) => {
   const {
     selectedValue,
     selectedCandy,
@@ -37,10 +42,12 @@ const CandyMachine: React.FC = () => {
     inputCoinVisible,
     outputCoinTop,
     outputCoinVisible,
-  } = useAutomaton();
+  } = useCandyMachine();
 
   return (
     <Container>
+      {viewOnly && <ViewOnlyShowcase to="/candy-machine" />}
+
       <Coin rightPosition={inputCoinRight} visible={inputCoinVisible} />
 
       <ShowcaseGlass>
