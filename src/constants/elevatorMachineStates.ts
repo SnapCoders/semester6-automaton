@@ -13,9 +13,31 @@ export const states = [
         width: 230,
         positions: {
           line: { top: 130, left: 20 },
-          label: { top: 16, left: 12 },
+          label: { top: -40, left: 110 },
         },
         rotations: { line: 45, label: -45 },
+      },
+      {
+        label: '2',
+        isActive: false,
+        transitionAs: 'straight',
+        width: 430,
+        positions: {
+          line: { top: 247, left: -88 },
+          label: { top: 0, left: 200 },
+        },
+        rotations: { line: 62, label: -62 },
+      },
+      {
+        label: '3',
+        isActive: false,
+        transitionAs: 'straight',
+        width: 660,
+        positions: {
+          line: { top: 367, left: -219 },
+          label: { top: 0, left: 325 },
+        },
+        rotations: { line: 70, label: -70 },
       },
     ],
   },
@@ -24,12 +46,17 @@ export const states = [
     isActive: false,
     isInitial: false,
     isFinal: true,
+    transitions: [{ label: '0', isActive: false, transitionAs: 'leftToRight' }],
   },
   {
     label: 'tf',
     isActive: false,
     isInitial: false,
     isFinal: false,
+    transitions: [
+      { label: '0', isActive: false, transitionAs: 'rightToLeft' },
+      { label: '1', isActive: false, transitionAs: 'upToDown' },
+    ],
   },
   {
     label: 'q1',
@@ -43,12 +70,18 @@ export const states = [
     isActive: false,
     isInitial: false,
     isFinal: true,
+    transitions: [{ label: '0', isActive: false, transitionAs: 'leftToRight' }],
   },
   {
     label: '1f',
     isActive: false,
     isInitial: false,
     isFinal: false,
+    transitions: [
+      { label: '0', isActive: false, transitionAs: 'rightToLeft' },
+      { label: '1', isActive: false, transitionAs: 'upToDown' },
+      { label: '2', isActive: false, transitionAs: 'downToUp' },
+    ],
   },
   {
     label: 'q2',
@@ -62,12 +95,18 @@ export const states = [
     isActive: false,
     isInitial: false,
     isFinal: true,
+    transitions: [{ label: '0', isActive: false, transitionAs: 'leftToRight' }],
   },
   {
     label: '2f',
     isActive: false,
     isInitial: false,
     isFinal: false,
+    transitions: [
+      { label: '0', isActive: false, transitionAs: 'rightToLeft' },
+      { label: '1', isActive: false, transitionAs: 'upToDown' },
+      { label: '2', isActive: false, transitionAs: 'downToUp' },
+    ],
   },
   {
     label: 'q3',
@@ -81,11 +120,16 @@ export const states = [
     isActive: false,
     isInitial: false,
     isFinal: true,
+    transitions: [{ label: '0', isActive: false, transitionAs: 'leftToRight' }],
   },
   {
     label: '3f',
     isActive: false,
     isInitial: false,
     isFinal: false,
+    transitions: [
+      { label: '0', isActive: false, transitionAs: 'rightToLeft' },
+      { label: '2', isActive: false, transitionAs: 'downToUp' },
+    ],
   },
 ];

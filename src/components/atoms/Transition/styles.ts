@@ -294,16 +294,14 @@ export const Container = styled.div<ContainerProps>`
           span {
             position: absolute;
             ${() =>
-              positions &&
-              positions.label &&
-              positions.label.top &&
-              css`
-                top: ${positions.label.top}px;
-              `}
+              positions && positions.label && positions.label.top
+                ? css`
+                    top: ${positions.label.top}px;
+                  `
+                : ''}
             ${() =>
               positions &&
               positions.label &&
-              positions.label.left &&
               css`
                 left: ${positions.label.left}px;
               `}
