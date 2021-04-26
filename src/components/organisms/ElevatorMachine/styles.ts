@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { IPerson } from '../../../hooks/useElevatorMachine';
+
 export const ViewOnlyBuilding = styled(Link)`
   position: absolute;
 
@@ -38,6 +40,74 @@ export const Container = styled.div`
   position: relative;
 `;
 
+export const Floors = styled.main`
+  width: calc(100% - 80px);
+  height: 100%;
+
+  background: #fbfbfb;
+  border-top-left-radius: 16px;
+
+  position: absolute;
+
+  hr {
+    margin-top: 140px;
+  }
+`;
+
+interface FloorItemProps {
+  leftPosition?: number;
+  person?: IPerson;
+}
+
+const personFloor = {
+  T: css`
+    top: 486px;
+  `,
+  '1': css`
+    top: 344px;
+  `,
+  '2': css`
+    top: 200px;
+  `,
+  '3': css`
+    top: 60px;
+  `,
+  '4': css``,
+};
+
+export const FloorItem = styled.div<FloorItemProps>`
+  ${({ leftPosition, person }) => css`
+    width: 50px;
+    height: 66px;
+
+    position: absolute;
+
+    left: ${leftPosition || 20}px;
+
+    transition: all 0.6s;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    opacity: 0.7;
+
+    display: flex;
+    flex-direction: column;
+
+    img {
+      position: absolute;
+
+      ${personFloor[person?.floor || 'T']};
+
+      width: 40px;
+      height: 80px;
+
+      object-fit: contain;
+    }
+  `}
+`;
+
 const floorElevator = {
   T: css`
     &::before {
@@ -56,6 +126,8 @@ const floorElevator = {
       font-size: 10px;
 
       transform: scale(1.1);
+
+      z-index: 11;
     }
   `,
   '1': css`
@@ -75,6 +147,8 @@ const floorElevator = {
       font-size: 10px;
 
       transform: scale(1.1);
+
+      z-index: 11;
     }
   `,
   '2': css`
@@ -94,6 +168,8 @@ const floorElevator = {
       font-size: 10px;
 
       transform: scale(1.1);
+
+      z-index: 11;
     }
   `,
   '3': css`
@@ -113,6 +189,8 @@ const floorElevator = {
       font-size: 10px;
 
       transform: scale(1.1);
+
+      z-index: 11;
     }
   `,
   '4': css`
@@ -145,8 +223,8 @@ export const Elevator = styled.div<ElevatorProps>`
     flex: 1;
 
     strong {
-      width: 50px;
-      height: 60px;
+      width: 60px;
+      height: 100px;
 
       color: #fbfbfb;
 
@@ -161,9 +239,56 @@ export const Elevator = styled.div<ElevatorProps>`
 
       position: relative;
 
-      transition: all 0.8s;
+      /* transition: all 5s; */
+      transition: all 0.2s;
 
       ${floor && floorElevator[floor]}
+    }
+  `}
+`;
+
+interface DoorsProps {
+  beforeWidth?: number;
+  afterWidth?: number;
+}
+
+export const Doors = styled.div<DoorsProps>`
+  ${({ beforeWidth, afterWidth }) => css`
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 10;
+
+    &:before {
+      content: '';
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+
+      background: #363636;
+
+      width: ${beforeWidth || 0}px;
+      height: 100%;
+    }
+
+    &:after {
+      content: '';
+
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+
+      background: #363636;
+
+      width: ${afterWidth || 0}px;
+      height: 100%;
+
+      border-left: 1px solid #111111;
     }
   `}
 `;
@@ -245,7 +370,7 @@ export const Aside = styled.aside`
 
 export const Footer = styled.footer`
   width: 100%;
-  height: 50px;
+  height: 44px;
 
   background: #232323;
 
