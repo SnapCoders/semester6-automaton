@@ -2,7 +2,7 @@ import { IInputState, IShowToast, IUpdateState } from '../@types/automaton';
 
 export interface ITransitate {
   inputState: IInputState;
-  setCurrentState: (_value: React.SetStateAction<string>) => void;
+  setCurrentState: (_value: React.SetStateAction<any>) => void;
   showMessage: (_input: IShowToast) => void;
   updateState: (_state: IUpdateState) => void;
   transitionTimer?: number;

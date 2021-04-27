@@ -24,11 +24,12 @@ interface ElevatorMachineProps {
 
 const ElevatorMachine: React.FC<ElevatorMachineProps> = ({ viewOnly }) => {
   const {
+    floor,
+    selectedPerson,
+    persons,
+    isElevatorDoorOpen,
     handleSelectFloor,
     handleSelectPerson,
-    floor,
-    isElevatorDoorOpen,
-    persons,
   } = useElevator();
 
   const personImages = useMemo(
@@ -76,19 +77,35 @@ const ElevatorMachine: React.FC<ElevatorMachineProps> = ({ viewOnly }) => {
 
       <Aside>
         <div className="menu">
-          <button type="button" onClick={() => handleSelectFloor('3')}>
+          <button
+            type="button"
+            disabled={floor === '3' || selectedPerson === undefined}
+            onClick={() => handleSelectFloor('3')}
+          >
             3
           </button>
 
-          <button type="button" onClick={() => handleSelectFloor('2')}>
+          <button
+            type="button"
+            disabled={floor === '2' || selectedPerson === undefined}
+            onClick={() => handleSelectFloor('2')}
+          >
             2
           </button>
 
-          <button type="button" onClick={() => handleSelectFloor('1')}>
+          <button
+            type="button"
+            disabled={floor === '1' || selectedPerson === undefined}
+            onClick={() => handleSelectFloor('1')}
+          >
             1
           </button>
 
-          <button type="button" onClick={() => handleSelectFloor('T')}>
+          <button
+            type="button"
+            disabled={floor === 'T' || selectedPerson === undefined}
+            onClick={() => handleSelectFloor('T')}
+          >
             T
           </button>
         </div>

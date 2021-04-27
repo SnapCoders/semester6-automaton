@@ -55,7 +55,6 @@ export const Floors = styled.main`
 `;
 
 interface FloorItemProps {
-  leftPosition?: number;
   person?: IPerson;
 }
 
@@ -76,13 +75,13 @@ const personFloor = {
 };
 
 export const FloorItem = styled.div<FloorItemProps>`
-  ${({ leftPosition, person }) => css`
+  ${({ person }) => css`
     width: 50px;
     height: 66px;
 
     position: absolute;
 
-    left: ${leftPosition || 20}px;
+    left: ${person?.leftPosition || 20}px;
 
     transition: all 0.6s;
 
@@ -102,6 +101,9 @@ export const FloorItem = styled.div<FloorItemProps>`
 
       width: 40px;
       height: 80px;
+
+      opacity: ${person?.isHidden ? 0 : 0.7};
+      visibility: ${person?.isHidden ? 'hidden' : 'visible'};
 
       object-fit: contain;
     }
@@ -239,8 +241,8 @@ export const Elevator = styled.div<ElevatorProps>`
 
       position: relative;
 
-      /* transition: all 5s; */
-      transition: all 0.2s;
+      transition: all 5s;
+      /* transition: all 0.2s; */
 
       ${floor && floorElevator[floor]}
     }
@@ -260,6 +262,8 @@ export const Doors = styled.div<DoorsProps>`
     height: 100%;
 
     z-index: 10;
+
+    transition: width 0.2s;
 
     &:before {
       content: '';
@@ -336,6 +340,13 @@ export const Aside = styled.aside`
 
       & + button {
         margin-top: 8px;
+      }
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        filter: brightness(1);
+        transform: scale(1);
       }
     }
   }
